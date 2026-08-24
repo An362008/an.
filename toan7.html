@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máy tính hình học</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eaf2f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 450px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px gray;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1e3a8a;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin: 6px 0;
+            border: none;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        #ketqua {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f1f5f9;
+            border-radius: 8px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📐 MÁY TÍNH HÌNH HỌC</h1>
+
+    <button onclick="hinhChuNhat()">1. Hình chữ nhật</button>
+    <button onclick="hinhTron()">2. Hình tròn</button>
+    <button onclick="hinhVuong()">3. Hình vuông</button>
+
+    <div id="nhap"></div>
+
+    <div id="ketqua">
+        Hãy chọn một hình để tính.
+    </div>
+
+</div>
+
+
+<script>
+
+function hinhChuNhat() {
+
+    document.getElementById("nhap").innerHTML = `
+        <h3>Hình chữ nhật</h3>
+
+        <label>Chiều dài:</label>
+        <input type="number" id="cd">
+
+        <label>Chiều rộng:</label>
+        <input type="number" id="cr">
+
+        <button onclick="tinhChuNhat()">TÍNH</button>
+    `;
+}
+
+
+function tinhChuNhat() {
+
+    let cd = Number(document.getElementById("cd").value);
+    let cr = Number(document.getElementById("cr").value);
+
+    if (cd <= 0 || cr <= 0) {
+        document.getElementById("ketqua").innerHTML =
+            "⚠️ Vui lòng nhập số lớn hơn 0!";
+        return;
+    }
+
+    let chuVi = (cd + cr) * 2;
+    let dienTich = cd * cr;
+
+    document.getElementById("ketqua").innerHTML = `
+        <b>HÌNH CHỮ NHẬT</b><br><br>
+
+        Chu vi = ${chuVi}<br>
+
+        Diện tích = ${dienTich}
+    `;
+}
+
+
+function hinhTron() {
+
+    document.getElementById("nhap").innerHTML = `
+        <h3>Hình tròn</h3>
+
+        <label>Bán kính:</label>
+        <input type="number" id="bk">
+
+        <button onclick="tinhHinhTron()">TÍNH</button>
+    `;
+}
+
+
+function tinhHinhTron() {
+
+    let bk = Number(document.getElementById("bk").value);
+
+    if (bk <= 0) {
+        document.getElementById("ketqua").innerHTML =
+            "⚠️ Vui lòng nhập bán kính lớn hơn 0!";
+        return;
+    }
+
+    let chuVi = 2 * Math.PI * bk;
+    let dienTich = Math.PI * bk * bk;
+
+    document.getElementById("ketqua").innerHTML = `
+        <b>HÌNH TRÒN</b><br><br>
+
+        Chu vi = ${chuVi.toFixed(2)}<br>
+
+        Diện tích = ${dienTich.toFixed(2)}
+    `;
+}
+
+
+function hinhVuong() {
+
+    document.getElementById("nhap").innerHTML = `
+        <h3>Hình vuông</h3>
+
+        <label>Độ dài cạnh:</label>
+        <input type="number" id="canh">
+
+        <button onclick="tinhHinhVuong()">TÍNH</button>
+    `;
+}
+
+
+function tinhHinhVuong() {
+
+    let canh = Number(document.getElementById("canh").value);
+
+    if (canh <= 0) {
+        document.getElementById("ketqua").innerHTML =
+            "⚠️ Vui lòng nhập cạnh lớn hơn 0!";
+        return;
+    }
+
+    let chuVi = canh * 4;
+    let dienTich = canh * canh;
+
+    document.getElementById("ketqua").innerHTML = `
+        <b>HÌNH VUÔNG</b><br><br>
+
+        Chu vi = ${chuVi}<br>
+
+        Diện tích = ${dienTich}
+    `;
+}
+
+</script>
+
+</body>
+</html>
